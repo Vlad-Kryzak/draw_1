@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Strategy">
+    <mxGraphModel dx="806" dy="499" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Контекст -->
+        <mxCell id="2" value="&lt;b&gt;OrderPaymentProcessor&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Context&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;- strategy: PaymentStrategy&lt;br&gt;&lt;hr&gt;+ setStrategy(strategy)&lt;br&gt;+ executePayment(amount)&lt;br&gt;+ validatePayment()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="300" y="100" width="200" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Интерфейс стратегии -->
+        <mxCell id="3" value="&lt;b&gt;PaymentStrategy&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Strategy Interface&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ pay(amount): PaymentResult" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="50" y="100" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Конкретные стратегии -->
+        <mxCell id="4" value="&lt;b&gt;CreditCardStrategy&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Strategy&lt;/font&gt;&lt;hr&gt;&lt;br&gt;- cardNumber, cvv, expiry&lt;br&gt;&lt;hr&gt;+ pay(amount)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="50" y="220" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="5" value="&lt;b&gt;PayPalStrategy&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Strategy&lt;/font&gt;&lt;hr&gt;&lt;br&gt;- email, token&lt;br&gt;&lt;hr&gt;+ pay(amount)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="240" y="220" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="6" value="&lt;b&gt;CryptoStrategy&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Strategy&lt;/font&gt;&lt;hr&gt;&lt;br&gt;- walletAddress&lt;br&gt;&lt;hr&gt;+ pay(amount)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="430" y="220" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="7" value="&lt;b&gt;CashOnDeliveryStrategy&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Strategy&lt;/font&gt;&lt;hr&gt;&lt;br&gt;- address, phone&lt;br&gt;&lt;hr&gt;+ pay(amount)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="620" y="220" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Клиент -->
+        <mxCell id="8" value="&lt;b&gt;CheckoutPage&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Client / UI&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ renderPaymentOptions()&lt;br&gt;+ handleUserSelection()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="300" y="350" width="200" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелки реализации -->
+        <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="4" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="5" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="6" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="7" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелка композиции -->
+        <mxCell id="13" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;имеет ссылку на&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;startArrow=open;startFill=0;" parent="1" source="2" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелка выбора стратегии -->
+        <mxCell id="14" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;выбирает стратегию&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="8" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Подпись паттерна -->
+        <mxCell id="15" value="&lt;b&gt;Strategy Pattern&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Выбор способа оплаты&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="30" width="300" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Пример кода -->
+        <mxCell id="16" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;// Динамическая смена стратегии&lt;br&gt;processor.setStrategy(new CreditCardStrategy());&lt;br&gt;processor.executePayment(100);&lt;br&gt;&lt;br&gt;processor.setStrategy(new PayPalStrategy());&lt;br&gt;processor.executePayment(50);&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingTop=4;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="550" y="100" width="230" height="90" as="geometry"/>
+        </mxCell>
+        
+        <!-- UI варианты -->
+        <mxCell id="17" value="&lt;b&gt;UI Выбор:&lt;/b&gt;&lt;br&gt;□ Кредитная карта&lt;br&gt;□ PayPal&lt;br&gt;□ Криптовалюта&lt;br&gt;□ Наличные при получении" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="550" y="350" width="230" height="80" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

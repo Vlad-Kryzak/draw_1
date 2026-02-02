@@ -1,0 +1,69 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Facade">
+    <mxGraphModel dx="806" dy="499" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Фасад -->
+        <mxCell id="2" value="&lt;b&gt;ShopApiFacade&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Facade&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;- orderService: OrderService&lt;br&gt;- catalogService: CatalogService&lt;br&gt;- userService: UserService&lt;br&gt;&lt;hr&gt;+ getHomePageData(userId)&lt;br&gt;+ placeOrder(userId, cart)&lt;br&gt;+ getUserProfile(userId)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="300" y="150" width="200" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- Подсистемы -->
+        <mxCell id="3" value="&lt;b&gt;OrderService&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Complex Subsystem&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ createOrder()&lt;br&gt;+ validateOrder()&lt;br&gt;+ processPayment()&lt;br&gt;+ updateInventory()&lt;br&gt;+ sendConfirmation()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="100" y="80" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="4" value="&lt;b&gt;CatalogService&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Complex Subsystem&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ getProducts()&lt;br&gt;+ getCategories()&lt;br&gt;+ searchProducts()&lt;br&gt;+ getProductDetails()&lt;br&gt;+ checkAvailability()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="100" y="250" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="5" value="&lt;b&gt;UserService&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Complex Subsystem&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ getUser()&lt;br&gt;+ updateProfile()&lt;br&gt;+ getOrderHistory()&lt;br&gt;+ getWishlist()&lt;br&gt;+ updatePreferences()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="540" y="80" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="6" value="&lt;b&gt;PaymentService&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Complex Subsystem&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ processCard()&lt;br&gt;+ processPayPal()&lt;br&gt;+ processCrypto()&lt;br&gt;+ refund()&lt;br&gt;+ getTransactionStatus()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="540" y="250" width="160" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Клиент -->
+        <mxCell id="7" value="&lt;b&gt;Frontend/Website&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;HTTP Client&lt;/font&gt;&lt;hr&gt;&lt;br&gt;GET /api/home&lt;br&gt;POST /api/order&lt;br&gt;GET /api/profile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="300" y="350" width="200" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелки от фасада к подсистемам -->
+        <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="2" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="2" target="4" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="2" target="5" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="2" target="6" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелка от клиента к фасаду -->
+        <mxCell id="12" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;использует&lt;br&gt;простой интерфейс&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" parent="1" source="7" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Подпись паттерна -->
+        <mxCell id="13" value="&lt;b&gt;Facade Pattern&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;API Gateway / Упрощение сложной системы&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="30" width="300" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Примечание -->
+        <mxCell id="14" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Фасад скрывает сложность 4-х сервисов&lt;br&gt;за 3 простыми методами API&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="300" y="320" width="200" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

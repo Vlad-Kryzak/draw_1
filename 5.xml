@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Observer">
+    <mxGraphModel dx="806" dy="499" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Subject/Publisher -->
+        <mxCell id="2" value="&lt;b&gt;NotificationService&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Subject / Publisher&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;- observers: Observer[]&lt;br&gt;&lt;hr&gt;+ subscribe(observer)&lt;br&gt;+ unsubscribe(observer)&lt;br&gt;+ notify(event, data)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="300" y="100" width="200" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- Интерфейс Observer -->
+        <mxCell id="3" value="&lt;b&gt;Observer&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Interface&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ update(event, data): void" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="50" y="100" width="160" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Конкретные наблюдатели -->
+        <mxCell id="4" value="&lt;b&gt;EmailNotifier&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Observer&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ update(event, data)&lt;br&gt;- sendEmail(to, subject)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="50" y="220" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="5" value="&lt;b&gt;WebSocketHandler&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Observer&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ update(event, data)&lt;br&gt;- sendToSocket(userId, data)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="220" y="220" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="6" value="&lt;b&gt;PushNotifier&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Observer&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ update(event, data)&lt;br&gt;- sendPush(deviceToken, data)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="390" y="220" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="7" value="&lt;b&gt;UINotificationPanel&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Concrete Observer&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ update(event, data)&lt;br&gt;- showNotification(message)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="560" y="220" width="140" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Инициатор события -->
+        <mxCell id="8" value="&lt;b&gt;OrderService&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Event Source&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ completeOrder(order)&lt;br&gt;- notifyAll(message)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="300" y="280" width="200" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелки реализации -->
+        <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="4" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="5" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="6" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="7" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелки подписки -->
+        <mxCell id="13" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;подписывается&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;" parent="1" source="4" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="14" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;подписывается&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;" parent="1" source="5" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="15" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;подписывается&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;" parent="1" source="6" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="16" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;подписывается&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;" parent="1" source="7" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Уведомление -->
+        <mxCell id="17" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;notify("order_completed", data)&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="8" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Подпись паттерна -->
+        <mxCell id="18" value="&lt;b&gt;Observer Pattern&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Система уведомлений на сайте&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="30" width="300" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Событие -->
+        <mxCell id="19" value="&lt;b&gt;Событие:&lt;/b&gt;&lt;br&gt;• Новый заказ&lt;br&gt;• Изменение статуса&lt;br&gt;• Новое сообщение&lt;br&gt;• Акция" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="550" y="100" width="150" height="80" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

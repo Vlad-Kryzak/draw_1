@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Factory Method">
+    <mxGraphModel dx="806" dy="499" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Абстрактный создатель -->
+        <mxCell id="2" value="&lt;b&gt;CoffeeMaker&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Abstract Creator&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ createCoffee(): Coffee&lt;br&gt;+ orderCoffee(): void" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="100" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Конкретные создатели -->
+        <mxCell id="3" value="&lt;b&gt;LatteMaker&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Concrete Creator&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ createCoffee(): Coffee" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="50" y="260" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="4" value="&lt;b&gt;CappuccinoMaker&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Concrete Creator&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ createCoffee(): Coffee" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="230" y="260" width="140" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Абстрактный продукт -->
+        <mxCell id="5" value="&lt;b&gt;Coffee&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Abstract Product&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ prepare(): void&lt;br&gt;+ getPrice(): number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="500" y="120" width="160" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Конкретные продукты -->
+        <mxCell id="6" value="&lt;b&gt;Latte&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Concrete Product&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ prepare(): void&lt;br&gt;+ getPrice(): number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="450" y="260" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="7" value="&lt;b&gt;Cappuccino&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;i&gt;Concrete Product&lt;/i&gt;&lt;/font&gt;&lt;hr&gt;&lt;br&gt;+ prepare(): void&lt;br&gt;+ getPrice(): number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="590" y="260" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелки наследования -->
+        <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="3" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="4" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="6" target="5" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;endSize=6;startArrow=block;startFill=1;startSize=6;" parent="1" source="7" target="5" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелки создания -->
+        <mxCell id="12" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;создаёт&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="3" target="6" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="13" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;создаёт&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" parent="1" source="4" target="7" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Зависимость -->
+        <mxCell id="14" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;зависит от&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;" parent="1" source="2" target="5" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Подпись паттерна -->
+        <mxCell id="15" value="&lt;b&gt;Factory Method Pattern&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Кофейня (Latte, Cappuccino)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="200" y="30" width="340" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Клиент -->
+        <mxCell id="16" value="&lt;b&gt;Клиент&lt;/b&gt;&lt;br&gt;(Barista)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="100" y="380" width="160" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Стрелка использования -->
+        <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" parent="1" source="16" target="2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
