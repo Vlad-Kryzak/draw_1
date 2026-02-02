@@ -1,21 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<stateMachine name="SieveOfEratosthenes">
-  <states>
-    <state id="start" name="Начало"/>
-    <state id="createList" name="Создать список чисел от 2 до N"/>
-    <state id="initP" name="Установить p = 2"/>
-    <state id="markMultiples" name="Вычеркнуть кратные p"/>
-    <state id="findNextP" name="Найти следующее незачёркнутое > p"/>
-    <state id="checkP" name="Проверить: p^2 <= N?"/>
-    <state id="end" name="Вывести простые числа"/>
-  </states>
-  <transitions>
-    <transition from="start" to="createList"/>
-    <transition from="createList" to="initP"/>
-    <transition from="initP" to="markMultiples"/>
-    <transition from="markMultiples" to="findNextP"/>
-    <transition from="findNextP" to="checkP"/>
-    <transition from="checkP" to="markMultiples" condition="p^2 <= N"/>
-    <transition from="checkP" to="end" condition="p^2 > N"/>
-  </transitions>
-</stateMachine>
+<mxfile host="app.diagrams.net" modified="2025-01-15T12:00:00Z" agent="AI Assistant" version="24.0.7">
+  <diagram name="Решето Эратосфена" id="SieveOfEratosthenes">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Состояния -->
+        <mxCell id="start" value="Начало" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="50" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="createList" value="Создать список чисел от 2 до N" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="initP" value="Установить p = 2" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="markMultiples" value="Вычеркнуть кратные p" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="findNextP" value="Найти следующее незачёркнутое &gt; p" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="checkP" value="Проверить: p² &lt;= N?" style="diamond;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="480" width="120" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="end" value="Вывести простые числа" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="final" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="690" width="40" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Переходы -->
+        <mxCell id="t1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="start" target="createList">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="createList" target="initP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="initP" target="markMultiples">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="markMultiples" target="findNextP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="findNextP" target="checkP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t6" value="Да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="checkP" target="markMultiples">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="t7" value="Нет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="checkP" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="end" target="final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
