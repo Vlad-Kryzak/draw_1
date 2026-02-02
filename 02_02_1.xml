@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stateMachine name="SieveOfEratosthenes">
+  <states>
+    <state id="start" name="Начало"/>
+    <state id="createList" name="Создать список чисел от 2 до N"/>
+    <state id="initP" name="Установить p = 2"/>
+    <state id="markMultiples" name="Вычеркнуть кратные p"/>
+    <state id="findNextP" name="Найти следующее незачёркнутое > p"/>
+    <state id="checkP" name="Проверить: p^2 <= N?"/>
+    <state id="end" name="Вывести простые числа"/>
+  </states>
+  <transitions>
+    <transition from="start" to="createList"/>
+    <transition from="createList" to="initP"/>
+    <transition from="initP" to="markMultiples"/>
+    <transition from="markMultiples" to="findNextP"/>
+    <transition from="findNextP" to="checkP"/>
+    <transition from="checkP" to="markMultiples" condition="p^2 <= N"/>
+    <transition from="checkP" to="end" condition="p^2 > N"/>
+  </transitions>
+</stateMachine>

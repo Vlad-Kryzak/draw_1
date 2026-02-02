@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stateMachine name="ATMInteraction">
+  <states>
+    <state id="start" name="Начало (карта вставлена)"/>
+    <state id="enterPIN" name="Ввод PIN"/>
+    <state id="pinCorrect" name="PIN верен"/>
+    <state id="pinWrong" name="PIN неверен"/>
+    <state id="forgotPIN" name="Забыт PIN"/>
+    <state id="cancelOperation" name="Отмена операции"/>
+    <state id="ejectCard" name="Карта возвращена"/>
+    <state id="selectOperation" name="Выбор операции"/>
+    <state id="processOperation" name="Выполнение операции"/>
+    <state id="end" name="Конец"/>
+  </states>
+  <transitions>
+    <transition from="start" to="enterPIN"/>
+    <transition from="enterPIN" to="pinCorrect" condition="PIN верный"/>
+    <transition from="enterPIN" to="pinWrong" condition="PIN неверный"/>
+    <transition from="enterPIN" to="forgotPIN" condition="Пользователь забыл PIN"/>
+    <transition from="enterPIN" to="cancelOperation" condition="Пользователь отменяет"/>
+    <transition from="pinWrong" to="enterPIN" condition="Попытка повторного ввода"/>
+    <transition from="pinWrong" to="cancelOperation" condition="Отмена после ошибок"/>
+    <transition from="forgotPIN" to="cancelOperation"/>
+    <transition from="cancelOperation" to="ejectCard"/>
+    <transition from="ejectCard" to="end"/>
+    <transition from="pinCorrect" to="selectOperation"/>
+    <transition from="selectOperation" to="processOperation"/>
+    <transition from="processOperation" to="selectOperation" condition="Новая операция"/>
+    <transition from="processOperation" to="cancelOperation" condition="Завершение сеанса"/>
+  </transitions>
+</stateMachine>
