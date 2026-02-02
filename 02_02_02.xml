@@ -1,31 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<stateMachine name="ATMInteraction">
-  <states>
-    <state id="start" name="Начало (карта вставлена)"/>
-    <state id="enterPIN" name="Ввод PIN"/>
-    <state id="pinCorrect" name="PIN верен"/>
-    <state id="pinWrong" name="PIN неверен"/>
-    <state id="forgotPIN" name="Забыт PIN"/>
-    <state id="cancelOperation" name="Отмена операции"/>
-    <state id="ejectCard" name="Карта возвращена"/>
-    <state id="selectOperation" name="Выбор операции"/>
-    <state id="processOperation" name="Выполнение операции"/>
-    <state id="end" name="Конец"/>
-  </states>
-  <transitions>
-    <transition from="start" to="enterPIN"/>
-    <transition from="enterPIN" to="pinCorrect" condition="PIN верный"/>
-    <transition from="enterPIN" to="pinWrong" condition="PIN неверный"/>
-    <transition from="enterPIN" to="forgotPIN" condition="Пользователь забыл PIN"/>
-    <transition from="enterPIN" to="cancelOperation" condition="Пользователь отменяет"/>
-    <transition from="pinWrong" to="enterPIN" condition="Попытка повторного ввода"/>
-    <transition from="pinWrong" to="cancelOperation" condition="Отмена после ошибок"/>
-    <transition from="forgotPIN" to="cancelOperation"/>
-    <transition from="cancelOperation" to="ejectCard"/>
-    <transition from="ejectCard" to="end"/>
-    <transition from="pinCorrect" to="selectOperation"/>
-    <transition from="selectOperation" to="processOperation"/>
-    <transition from="processOperation" to="selectOperation" condition="Новая операция"/>
-    <transition from="processOperation" to="cancelOperation" condition="Завершение сеанса"/>
-  </transitions>
-</stateMachine>
+<mxfile host="app.diagrams.net" modified="2025-01-15T12:00:00Z" agent="AI Assistant" version="24.0.7">
+  <diagram name="Банкомат с дополнениями" id="ATMWithCancellation">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Состояния -->
+        <mxCell id="start" value="Начало (карта вставлена)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="50" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="enterPIN" value="Ввод PIN" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pinCorrect" value="PIN верен" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="200" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="pinWrong" value="PIN неверен" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6e6;" vertex="1" parent="1">
+          <mxGeometry x="150" y="200" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="forgotPIN" value="Забыт PIN" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="150" y="280" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cancel" value="Отмена операции" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="300" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="eject" value="Карта возвращена" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="select" value="Выбор операции" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="280" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="process" value="Выполнение операции" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="360" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="final" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="550" width="40" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Переходы -->
+        <mxCell id="t1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="start" target="enterPIN">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t2" value="PIN верный" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="enterPIN" target="pinCorrect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t3" value="PIN неверный" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="enterPIN" target="pinWrong">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t4" value="Забыл PIN" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="enterPIN" target="forgotPIN">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t5" value="Отмена" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="enterPIN" target="cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t6" value="Повторный ввод" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pinWrong" target="enterPIN">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t7" value="Слишком много ошибок" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pinWrong" target="cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="forgotPIN" target="cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="cancel" target="eject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eject" target="final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="pinCorrect" target="select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="select" target="process">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t13" value="Новая операция" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="process" target="select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="t14" value="Завершение сеанса" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="process" target="cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
